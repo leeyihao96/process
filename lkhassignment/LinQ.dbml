@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LKH" Class="LinQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\LKH.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Reservation" Member="Reservations">
+    <Type Name="Reservation">
+      <Column Name="ReservationId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="pickupAddress" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ScheduleId" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="CustId" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Association Name="Schedule_Reservation" Member="Schedule" ThisKey="ScheduleId" OtherKey="scheduleId" Type="Schedule" IsForeignKey="true" />
+      <Association Name="customer_Reservation" Member="customer" ThisKey="CustId" OtherKey="cust_id" Type="customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.driver" Member="drivers">
+    <Type Name="driver">
+      <Column Name="driver_id" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="driver_username" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="driver_password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="driver_full_name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="driver_ic_no" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="driver_tel_no" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
+      <Column Name="driver_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="driver_address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="driver_hire_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="driver_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="driver_role" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="driver_taxi_company" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="driver_license_expiry_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="driver_taxi_plate_no" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Association Name="driver_Schedule" Member="Schedules" ThisKey="driver_id" OtherKey="driverId" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedules">
+    <Type Name="Schedule">
+      <Column Name="scheduleId" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="driverId" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Association Name="Schedule_Reservation" Member="Reservations" ThisKey="scheduleId" OtherKey="ScheduleId" Type="Reservation" />
+      <Association Name="driver_Schedule" Member="driver" ThisKey="driverId" OtherKey="driver_id" Type="driver" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customer" Member="customers">
+    <Type Name="customer">
+      <Column Name="cust_id" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cust_username" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="cust_password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cust_full_name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="cust_tel_no" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
+      <Column Name="cust_email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="cust_address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cust_join_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="cust_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="customer_Reservation" Member="Reservations" ThisKey="cust_id" OtherKey="CustId" Type="Reservation" />
+    </Type>
+  </Table>
+</Database>

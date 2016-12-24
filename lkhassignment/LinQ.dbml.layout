@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LinQ">
+  <DataContextMoniker Name="/LinQDataContext" />
+  <nestedChildShapes>
+    <classShape Id="4791755e-5f2f-4182-adc1-171397e5f3ed" absoluteBounds="2.5, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LinQDataContext/Reservation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c8b9b6b5-f3a2-4b2c-9621-331c69cffb91" absoluteBounds="2.515, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6c4d7512-4f7f-4cf8-b5f7-a24ac9f44c22" absoluteBounds="1.125, 3.625, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/LinQDataContext/driver" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4da8101-bd32-41c1-8f77-fd6684b7cbbe" absoluteBounds="1.1399999999999997, 4.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a0b4bd7b-2967-4bb9-a987-0bfdc866676a" absoluteBounds="4.875, 4.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/LinQDataContext/Schedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa9f07f9-51fd-45b6-a305-7412641bb80c" absoluteBounds="4.89, 4.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.875 : 4.375); (5.875 : 2.08756658691406); (4.5 : 2.08756658691406)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinQDataContext/Schedule/Schedule_Reservation" />
+      <nodes>
+        <classShapeMoniker Id="a0b4bd7b-2967-4bb9-a987-0bfdc866676a" />
+        <classShapeMoniker Id="4791755e-5f2f-4182-adc1-171397e5f3ed" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.125 : 5.06814697265625); (4.875 : 5.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinQDataContext/driver/driver_Schedule" />
+      <nodes>
+        <classShapeMoniker Id="6c4d7512-4f7f-4cf8-b5f7-a24ac9f44c22" />
+        <classShapeMoniker Id="a0b4bd7b-2967-4bb9-a987-0bfdc866676a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cb401555-ca50-4a3c-91ab-b8e561bb1a28" absoluteBounds="7.125, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LinQDataContext/customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a39efaa0-35d8-41b5-acfe-281ae1c2a0df" absoluteBounds="7.1400000000000006, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.125 : 1.07252563476563); (4.5 : 1.07252563476563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinQDataContext/customer/customer_Reservation" />
+      <nodes>
+        <classShapeMoniker Id="cb401555-ca50-4a3c-91ab-b8e561bb1a28" />
+        <classShapeMoniker Id="4791755e-5f2f-4182-adc1-171397e5f3ed" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
